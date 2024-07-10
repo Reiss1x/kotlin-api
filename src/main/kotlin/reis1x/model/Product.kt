@@ -1,9 +1,16 @@
 package reis1x.model
 
-class Product(val id: Long? = null,
-              val name: String? = null,
-              val prices: Double? = null,
-              val description: String? = null) {
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import jakarta.persistence.*
+
+@Entity(name = "product")
+class Product(){
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+    var prices: Double? = null
+    lateinit var name: String
+    lateinit var description: String
 
     override fun toString(): String {
         return "Product(id=$id, name=$name, prices=$prices, description=$description)"

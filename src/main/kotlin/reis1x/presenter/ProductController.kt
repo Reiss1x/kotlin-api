@@ -1,8 +1,11 @@
 package reis1x.presenter
 
+import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
 import reis1x.model.Product
+import reis1x.repo.ProductRepo
+import reis1x.services.ProductService
 import java.util.ArrayList
 
 
@@ -10,24 +13,16 @@ import java.util.ArrayList
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 class ProductController {
-
-    private val prodList: ArrayList<Product> = ArrayList();
+    @Inject
+    lateinit var ps: ProductService
 
     @POST
-    fun addProduct(product: Product): Product {
-        prodList.add(product)
-        return product;
-    }
+    fun addProduct(product: Product) = ps.addProduct(product)
+    @GET
+    @Path("/getProd/{name}")
+    fun getProdByName(@PathParam("name") name: String) = ps.getByName(name)
+    @GET
+    fun getAllProd() = ps.getAll()
 
-    @GET
-    @Path("/{name}")
-    fun getProdByName(@PathParam("name") name: String) : Product? {
-        println(prodList)
-        val prod:Product? = prodList.find{it.name == name};
-        return prod;
-    }
-    @GET
-    fun getAllProd() : ArrayList<Product> {
-        return prodList;
-    }
+
 }
