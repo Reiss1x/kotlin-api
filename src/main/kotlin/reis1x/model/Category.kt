@@ -4,13 +4,13 @@ import jakarta.persistence.*
 
 
 @Entity
+@Table(name = "category")
 class Category() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long?=null
     lateinit var name:String
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    var product: Product? = null
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    var products: MutableList<Product> = ArrayList()
 }

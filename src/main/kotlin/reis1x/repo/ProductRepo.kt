@@ -7,4 +7,8 @@ import reis1x.model.Product
 @ApplicationScoped
 class ProductRepo: PanacheRepository<Product> {
     fun findByName(name: String) = find("name", name).firstResult()
+
+    fun findAllProducts(): List<Product> {
+        return findAll().list()
+    }
 }

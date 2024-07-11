@@ -18,11 +18,13 @@ class ProductController {
     @Inject
     lateinit var ps: ProductService
     @POST
-    fun addProduct(proddto: ProdRequestDTO) = ps.addProduct(proddto)
+    fun addProduct(proddto: ProdRequestDTO) = ps.createProduct(proddto)
     @GET
     @Path("/getProd/{name}")
     fun getProdByName(@PathParam("name") name: String) = ps.getByName(name)
+
+
     @GET
-    fun getAllProd() = ps.getAll()
+    fun getAllProd() = ps.listProducts()
 
 }
