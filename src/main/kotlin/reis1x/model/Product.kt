@@ -12,7 +12,6 @@ class Product(){
     lateinit var name: String
     lateinit var description: String
 
-    override fun toString(): String {
-        return "Product(id=$id, name=$name, prices=$prices, description=$description)"
-    }
+    @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var categories: MutableList<Category> = ArrayList()
 }

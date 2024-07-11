@@ -3,6 +3,8 @@ package reis1x.presenter
 import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
+import jakarta.ws.rs.core.Response
+import reis1x.model.ProdRequestDTO
 import reis1x.model.Product
 import reis1x.repo.ProductRepo
 import reis1x.services.ProductService
@@ -15,14 +17,12 @@ import java.util.ArrayList
 class ProductController {
     @Inject
     lateinit var ps: ProductService
-
     @POST
-    fun addProduct(product: Product) = ps.addProduct(product)
+    fun addProduct(proddto: ProdRequestDTO) = ps.addProduct(proddto)
     @GET
     @Path("/getProd/{name}")
     fun getProdByName(@PathParam("name") name: String) = ps.getByName(name)
     @GET
     fun getAllProd() = ps.getAll()
-
 
 }
