@@ -13,12 +13,10 @@ POST: ``/prod``
     "prices": 9.99,  
     "name": "Product",  
     "categories": [  
-        {  
-            "id": 1,  
+        {   
             "name": "Category1"  
         },  
         {    
-            "id": 2,  
             "name": "Category2"  
         }  
     ]  
