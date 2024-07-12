@@ -1,4 +1,5 @@
-Run locally using: mvn quarkus dev
+Run locally using: docker-compose up --build  
+All requests are made in: http://localhost:8080  
 
 create product:  
 POST: /prod  
@@ -26,7 +27,15 @@ POST: /cat
 }
 ```
 
+get all products:  
+/prod  
+
+get product by name:
+/prod/"name"  
+
 get product by category name:   
 /prod/getBy/"categoryName"    
 
-to-do: docker
+get all categories:     
+/cat
+
