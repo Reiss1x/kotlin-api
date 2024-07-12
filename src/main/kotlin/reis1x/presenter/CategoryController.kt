@@ -14,15 +14,8 @@ class CategoryController {
 
     @Inject
     lateinit var cs: CategoryService
-
     @POST
     fun addCategory(category: Category) = cs.addCategory(category)
     @GET
     fun getAllCategory() = cs.getAllCategories()
-
-    @GET
-    @Path("getBy/{name}")
-    fun getProductsByCat(@PathParam("name") category: String): Response{
-        return cs.listProductsByCategory(category)
-    }
 }

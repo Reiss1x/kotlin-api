@@ -2,12 +2,9 @@ package reis1x.services
 
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
-import jakarta.persistence.EntityManager
-import jakarta.persistence.TypedQuery
 import jakarta.transaction.Transactional
 import jakarta.ws.rs.core.Response
 import reis1x.model.*
-import reis1x.repo.CategoryRepo
 import reis1x.repo.ProductRepo
 
 @ApplicationScoped
@@ -21,7 +18,7 @@ class ProductService {
     fun getByName(name: String) = repo.findByName(name)
 
     @Transactional
-    fun createProduct(productDTO: ProdRequestDTO): Product {
+    fun createProduct(productDTO: ProductRequest): Product {
         val categories = productDTO.categories
         val cats = ArrayList<Category>()
 
@@ -44,7 +41,7 @@ class ProductService {
     fun listProducts(): Response {
         val products = repo.findAllProducts()
         val productDTOs = products.map { product ->
-            ProdResponseDTO(
+            ProductResponse(
                 id = product.id,
                 name = product.name ?: "",
                 prices = product.prices,
@@ -57,5 +54,25 @@ class ProductService {
             )
         }
         return Response.ok(productDTOs).build()
+    }
+    @Transactional
+    fun listProductsByCategory(category: String): Response {
+        val bruteProds = repo.findByCategoryName(category)
+
+        val productDTOs = bruteProds.map { product ->
+            ProductResponse(
+                id = product.id,
+                name = product.name ?: "",
+                prices = product.prices,
+                categories = product.categories.map { category ->
+                    CategoryDTO(
+                        id = category.id,
+                        name = category.name ?: ""
+                    )
+                }
+            )
+        }
+        return Response.ok(productDTOs).build()
+
     }
 }

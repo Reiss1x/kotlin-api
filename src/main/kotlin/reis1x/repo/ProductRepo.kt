@@ -11,4 +11,8 @@ class ProductRepo: PanacheRepository<Product> {
     fun findAllProducts(): List<Product> {
         return findAll().list()
     }
+
+    fun findByCategoryName(categoryName: String): List<Product> {
+        return find("SELECT p FROM Product p JOIN p.categories c WHERE c.name = ?1", categoryName).list()
+    }
 }
