@@ -29,8 +29,10 @@ POST: /cat
 
 get all products:  
 /prod  
+
 get product by name:
 /prod/"name"  
+
 get product by category name:   
 /prod/getBy/"categoryName"    
 
