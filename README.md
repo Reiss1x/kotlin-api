@@ -1,4 +1,9 @@
-Run locally using: docker-compose up --build  
+Run locally:  
+clone project: ``https://github.com/Reiss1x/kotlin-api.git``  
+acces project directory: ``cd .\kotlin-api\``  
+run command: ``./mvnw package``  
+run docker: ``docker-compose up --build``  
+
 All requests are made in: http://localhost:8080  
 
 create product:  
