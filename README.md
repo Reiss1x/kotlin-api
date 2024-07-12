@@ -36,7 +36,7 @@ get all categories:
 ``/cat``
 
 get product by name:  
-``/prod/"name"``  
+``/prod/"productName"``  
 get product by category name:   
 ``/prod/getBy/"categoryName"``  
 
