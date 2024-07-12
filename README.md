@@ -7,7 +7,7 @@ run docker: ``docker-compose up --build``
 All requests are made in: http://localhost:8080  
 
 create product:  
-POST: /prod  
+POST: ``/prod``  
 ```json
 {  
     "prices": 9.99,  
@@ -25,7 +25,7 @@ POST: /prod
 }  
 ```
 create category:  
-POST: /cat
+POST: ``/cat``
 ```json
 {  
     "name": "Category"  
@@ -33,14 +33,14 @@ POST: /cat
 ```
 
 get all products:  
-/prod  
-
-get product by name:
-/prod/"name"  
-
-get product by category name:   
-/prod/getBy/"categoryName"    
-
+``/prod``  
 get all categories:     
-/cat
+``/cat``
+
+get product by name:  
+``/prod/"name"``  
+get product by category name:   
+``/prod/getBy/"categoryName"``  
+
+
 
